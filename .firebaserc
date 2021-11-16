@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "log-in-dashboard": {
+      "hosting": {
+        "login-admin": [
+          "log-in-dashboard"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "log-in-dashboard"
+  }
+}
