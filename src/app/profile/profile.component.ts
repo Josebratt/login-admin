@@ -14,6 +14,7 @@ export class ProfileComponent implements OnInit {
 
   private itemDoc!: AngularFirestoreDocument<userProfile>;
   item!: Observable<userProfile>;
+  selectedValue: any;
 
   constructor(public afAuth: AngularFireAuth, public afs: AngularFirestore) { 
   }
@@ -24,5 +25,8 @@ export class ProfileComponent implements OnInit {
       //  this.item = this.itemDoc.valueChanges();
   }
 
+  clicked(){
+    console.log('the selected input is:');
+  }
 
 }
