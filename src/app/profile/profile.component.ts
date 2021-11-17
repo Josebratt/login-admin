@@ -25,8 +25,4 @@ export class ProfileComponent implements OnInit {
       //  this.item = this.itemDoc.valueChanges();
   }
 
-  clicked(){
-    console.log('the selected input is:');
-  }
-
 }
