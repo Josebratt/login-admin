@@ -1,7 +1,7 @@
 export interface userProfile {
-    uid: string;
-    name: string;
-    email: string;
+    uid?: string;
+    name?: string | null ;
+    email?: string | null;
     address: string;
     city: string;
     state: string;
