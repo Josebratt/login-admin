@@ -30,14 +30,14 @@ export class LoginComponent implements OnInit {
     let resp;
 
     try {
-      if (this.isSignUp) {
-          const resp = await this.afAuth.createUserWithEmailAndPassword(email, password);
-          await resp.user?.updateProfile({ displayName: `${firstName} ${lastName}`});
-          await this.auth.createUserDocument();
-          form.reset();
-      } else {
-          resp = await this.afAuth.signInWithEmailAndPassword(email, password);
-      }
+        if (this.isSignUp) {
+            const resp = await this.afAuth.createUserWithEmailAndPassword(email, password);
+            await resp.user?.updateProfile({ displayName: `${firstName} ${lastName}`});
+            await this.auth.createUserDocument();
+            form.reset();
+        } else {
+            resp = await this.afAuth.signInWithEmailAndPassword(email, password);
+        }
         
         const uid= resp?.user?.uid;
         this.router.navigate([`/profile/${uid}`]);
