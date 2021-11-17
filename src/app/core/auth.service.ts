@@ -20,15 +20,15 @@ export class AuthService {
     return !!this.afAuth.currentUser;
   }
 
-  createUserDocument(){
+  async createUserDocument(){
     // get the current user
-    const user = this.afAuth.currentUser;
+    const user = await this.afAuth.currentUser;
 
     // create de object with new data
     const userProfile: userProfile = {
-        uid: user.uid,
-        name: user.displayName ,
-        email: user.email,
+        uid: user?.uid,
+        name: user?.displayName,
+        email: user?.email,
         address: '',
         city: '',
         state: '',
@@ -39,6 +39,6 @@ export class AuthService {
     }
 
     // write to cloud firestore
-    return this.afs.doc(`users/${user.uid}`).set(userProfile);
+    return this.afs.doc(`users/${user?.uid}`).set(userProfile);
   }
 }
