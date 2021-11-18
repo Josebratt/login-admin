@@ -12,15 +12,18 @@ import { userProfile } from '../core/user-profile.model';
 })
 export class ProfileComponent implements OnInit {
 
-  private itemDoc!: AngularFirestoreDocument<userProfile>;
+  private itemDoc: AngularFirestoreDocument<userProfile> | undefined;
   item!: Observable<userProfile>;
   selectedValue: any;
 
   constructor(public afAuth: AngularFireAuth, public afs: AngularFirestore) { 
   }
 
-  async ngOnInit() {
+  ngOnInit() {
 
+    // this.afs.doc<userProfile>(`users/${this.afAuth.currentUser.then(
+    //   data => this.itemDoc = data
+    // )}`)
        this.itemDoc = this.afs.doc<userProfile>(`users/${this.afAuth.currentUser}`);
       //  this.item = this.itemDoc.valueChanges();
   }
