@@ -41,4 +41,8 @@ export class AuthService {
     // write to cloud firestore
     return this.afs.doc(`users/${user?.uid}`).set(userProfile);
   }
+
+  updateUserDocument(userProfile: userProfile){
+      return this.afs.doc(`users/${userProfile.uid}`).update(userProfile);
+  }
 }
