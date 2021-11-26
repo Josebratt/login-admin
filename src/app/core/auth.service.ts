@@ -17,7 +17,7 @@ export class AuthService {
   }
 
   isLoggedIn(){
-    return !!this.afAuth.currentUser;
+    return !this.afAuth.currentUser;
   }
 
   async createUserDocument(){
@@ -44,5 +44,16 @@ export class AuthService {
 
   updateUserDocument(userProfile: userProfile){
       return this.afs.doc(`users/${userProfile.uid}`).update(userProfile);
+  }
+
+  async routeOnLogin() {
+    const user = await this.afAuth.currentUser;
+    const token = await user?.getIdTokenResult();
+
+    if (token!.claims.admin) {
+      this.router.navigate(['/users']);
+    } else {
+      this.router.navigate([`/profile/${user?.uid}`]);
+    }
   }
 }
