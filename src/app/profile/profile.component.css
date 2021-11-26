@@ -6,3 +6,21 @@
   .ui.form select.specialty {
     height: 55px;
   }
+
+  .profile-image {
+    padding: 20px;
+  }
+
+  .profile-image img {
+    width: 100%;
+    height: auto;
+  }
+
+  .file-input {
+    display: none;
+  }
+
+  .upload-button {
+    float: right;
+    margin-top: 15px;
+  }
