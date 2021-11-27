@@ -35,6 +35,16 @@ const redirectLoggedInToProfileOrUsers = () =>
         })
   )
 
+  const onlyAllowSelfOrAdmin = (next: { params: { id: any; }; }) => pipe(
+    customClaims, map( claims => {
+      if (claims.length = 0) {
+        return ['']
+      }
+
+      return next.params.id === claims.user_id || claims.admin;
+    })
+  )
+
 const routes: Routes = [
   { path: '', component: 
   LoginComponent, 
@@ -44,7 +54,7 @@ const routes: Routes = [
   { path: 'profile/:id', 
     component: ProfileComponent, 
     canActivate: [AngularFireAuthGuard],
-    data: {authGuardPipe: onlyAllowSelf }
+    data: {authGuardPipe: onlyAllowSelfOrAdmin }
   },
   { path: 'users', 
     component: UsersComponent,
