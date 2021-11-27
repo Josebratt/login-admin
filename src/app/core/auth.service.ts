@@ -17,7 +17,7 @@ export class AuthService {
   }
 
   isLoggedIn(){
-    return !this.afAuth.currentUser;
+    return !!this.afAuth.currentUser;
   }
 
   async createUserDocument(){
